@@ -41,10 +41,9 @@ def callback():
 # ================= 機器人區塊 Start =================
 # 自定義函式(Function) Start =================
 import random
-def lunch_choice():
-    _choice = ["肥前屋","切仔麵","米粉湯","地下街","鐵板燒"]
-    index = random.randint(0,len(_choice)-1)
-    return _choice[index]
+def get_lunch_choice():
+    lunch_choices = ["肥前屋","切仔麵","米粉湯","地下街","鐵板燒"]
+    return random.choice(lunch_choices)
 
 def is_my_word(msg,_word_list):
     is_word = False
@@ -63,7 +62,7 @@ def handle_text_message(event):                  # default
     _chg_word = ["換一個","不喜歡","吃過了"]
     
     if is_my_word(msg,_chg_word):
-        choice = lunch_choice()
+        choice = get_lunch_choice()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="建議你可以吃「{}」".format(choice)))
