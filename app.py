@@ -65,18 +65,18 @@ def handle_text_message(event):                  # default
     if is_my_word(msg,_chg_word):
         choice = lunch_choice()
         line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text="建議你可以吃「{}」".format(choice)))
+            event.reply_token,
+            TextSendMessage(text="建議你可以吃「{}」".format(choice)))
     
     elif msg == "bye":
         line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text="希望你有個愉快的午餐"))
+            event.reply_token,
+            TextSendMessage(text="希望你有個愉快的午餐"))
 
     else:
         line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text="我聽不懂你在說什麼！"))
+            event.reply_token,
+            TextSendMessage(text="我聽不懂你在說什麼！"))
 
     # 針對使用者各種訊息的回覆 End =========
 
