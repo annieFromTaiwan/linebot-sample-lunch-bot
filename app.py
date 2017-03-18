@@ -45,12 +45,11 @@ def get_lunch_choice():
     lunch_choices = ["肥前屋","切仔麵","米粉湯","地下街","鐵板燒"]
     return random.choice(lunch_choices)
 
-def is_my_word(msg,_word_list):
-    is_word = False
-    for i in _word_list:  
-        if i in msg:     
-            is_word = True
-    return is_word
+def has_keyword(msg, word_list):
+    for word in word_list:
+        if word in msg:
+            return True
+    return False
 
 # 自定義函式(Function) End =================
 
@@ -59,9 +58,9 @@ def handle_text_message(event):                  # default
     msg = event.message.text #message from user
 
     # 針對使用者各種訊息的回覆 Start =========
-    _chg_word = ["換一個","不喜歡","吃過了"]
+    keyword_list = ["吃什麼","換一個","不喜歡","吃過了"]
     
-    if is_my_word(msg,_chg_word):
+    if has_keyword(msg, keyword_list):
         choice = get_lunch_choice()
         line_bot_api.reply_message(
             event.reply_token,
